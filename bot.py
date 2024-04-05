@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+
 import asyncio
 import telegram
 
@@ -10,7 +11,6 @@ async def main():
     async with bot:
         print(await bot.get_me())
 
-print(os.getenv('TOKEN'))
 
-#if __name__ ==  '__main__':
-    #asyncio.run(main())
+if __name__ ==  '__main__':
+    asyncio.run(main())
