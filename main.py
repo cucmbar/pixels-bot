@@ -14,8 +14,8 @@ def draw_pixel(canvas, coordinates, color):
 
 def main():
     # Запрашиваем у пользователя размеры холста
-    width = int(input("Введите ширину холста в пикселях: ")) + 1
-    height = int(input("Введите высоту холста в пикселях: ")) + 1
+    width = int(input("Введите ширину холста в пикселях: ")) 
+    height = int(input("Введите высоту холста в пикселях: "))
     canvas = create_canvas(width, height)
 
     while True:
@@ -31,13 +31,13 @@ def main():
             x, y, r, g, b = map(int, user_input.split(","))
 
             # Проверяем, что координаты и цвет заданы корректно
-            if not (0 <= x < width) or not (0 <= y < height):
-                raise ValueError(f"Координаты выходят за пределы холста (0-{width-1}, 0-{height-1})")
+            if not (0 < x <= width) or not (0 < y <= height):
+                raise ValueError(f"Координаты выходят за пределы холста (1-{width}, 1-{height})")
             if not (0 <= r <= 255) or not (0 <= g <= 255) or not (0 <= b <= 255):
                 raise ValueError("Цвет должен быть задан числами от 0 до 255 включительно")
 
             # Рисуем пиксель на холсте
-            draw_pixel(canvas, (x, y), (r, g, b))  # Уменьшаем координаты на 1
+            draw_pixel(canvas, (x-1, y-1), (r, g, b))  # Уменьшаем координаты на 1
 
         except Exception as e:
             print("Ошибка:", e)
